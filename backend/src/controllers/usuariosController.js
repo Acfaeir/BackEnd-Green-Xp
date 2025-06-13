@@ -39,6 +39,7 @@ exports.registrarUsuario = async (req, res) => {
 exports.loginUsuario = async (req, res) => {
   try {
     const { email, senha } = req.body;
+      console.log('💡 Chegou um POST em /usuarios/login:', req.body);
 
     // 1. Busca o usuário pelo email
     const usuario = await Usuario.findOne({ where: { email } });
@@ -55,7 +56,7 @@ exports.loginUsuario = async (req, res) => {
     // 3. Retorna os dados do usuário logado
     res.json({
       mensagem: 'Login realizado com sucesso',
-      id: usuario.id_usuario,
+      id_usuario: usuario.id_usuario,
       nome: usuario.nome,
       email: usuario.email,
       pontos: usuario.pontos,

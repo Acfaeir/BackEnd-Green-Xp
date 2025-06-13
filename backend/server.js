@@ -1,5 +1,6 @@
 // Importa o Express
 const express = require('express');
+const cors = require('cors');  
 const app = express(); // Inicializa o servidor Express
 
 // Importa os grupos de rotas organizados por funcionalidade
@@ -10,6 +11,7 @@ const resgateRoutes = require("./src/routes/resgatesRoutes");         // Resgate
 const recompensaRoutes = require("./src/routes/recompensasRoutes");   // Recompensas: listar/criar recompensas
 
 // Middleware para permitir receber JSON no corpo das requisições
+app.use(cors({ origin: '*' }));   
 app.use(express.json());
 
 // Registra os caminhos base para cada rota do sistema
